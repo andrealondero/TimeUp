@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="timesheet.Views.ConfirmationPage"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             NavigationPage.HasNavigationBar="True"
+             Title="CONFIRMATION">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="SAVE" 
+            Clicked="OnSave">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="Date" FontSize="Small"/>
+            <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" MaxLines="1" VerticalOptions="Center" FontSize="Large"/>
+            <Label Text="Worked hours" FontSize="Small" />
+            <Label Text="{Binding Hours}" FontSize="Large"/>
+            <Label Text="Description" FontSize="Small" />
+            <Label Text="{Binding Description}" FontSize="Large"/>
+
+            <input:RadioButtonGroupView>
+                <input:CheckBox x:Name="radConf" Text="CONFIRM" Type="Check"  IsChecked="{Binding ConfirmedStatus}" CheckChanged="RadConf_Clicked"/>
+                <input:CheckBox x:Name="radRef" Text="REFUSE" Type="Cross" IsChecked="{Binding RefusedStatus}" CheckChanged="RadRef_Clicked"/>
+            </input:RadioButtonGroupView>
+
+            <StackLayout HorizontalOptions="CenterAndExpand" Margin="10,30,10,0">
+          <Button Text="Cancel" Clicked="OnCancelClicked" HorizontalOptions="StartAndExpand" BackgroundColor="#2D8183" BorderColor="White" BorderWidth="0.5" BorderRadius="10" TextColor="White" />
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+
+</ContentPage>

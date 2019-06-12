@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:timesheet"
+             x:Class="timesheet.Views.AddItemPage"
+             NavigationPage.HasNavigationBar="True"
+             Title="NEW TIMESHEET">
+
+    <ScrollView>
+
+        <StackLayout Spacing="20" Padding="15">
+
+            <!--Entry x:Name="activateDate" IsVisible="True" Placeholder="Select a Date" FontSize="Medium" PlaceholderColor="#910C07" /-->
+            <!--Label x:Name="dateLabel" Text="{Binding Date, Source={x:Reference datepicker}}" FontSize="Medium" /-->
+            <!--DatePicker x:Name="datepicker" IsVisible="False" IsEnabled="False" Date="{Binding Date}" DateSelected="Datepicker_DateSelected" MinimumDate="2019-01-01" MaximumDate="{x:Static system:DateTime.Now}" Format="yyyy-MM-dd" HeightRequest="45" FontSize="Small" Margin="0" /-->
+            <Label Text="Select Date:"/>
+            <local:NullableDatePicker NullableDate="{Binding Item.Date}" MinimumDate="2019-01-01" MaximumDate="{x:Static system:DateTime.Now}"/>
+            <Label Text="Worked Hours" TextColor="#2D8183" FontSize="Medium" />
+            <Label x:Name="hoursLabel" FontSize="Medium" />
+            <Stepper x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>
+            <!--Editor x:Name="hourseditor" Text="{Binding Item.Hours, Mode=TwoWay}" Placeholder="0" PlaceholderColor="#910C07" HeightRequest="45" FontSize="Small" Margin="0" /-->
+            <Label Text="Description" TextColor="#2D8183" FontSize="Medium" />
+            <Editor x:Name="descriptioneditor" Text="{Binding Description, Mode=TwoWay}" Placeholder="your activities here" PlaceholderColor="#910C07" HeightRequest="100" MaxLength="120" FontSize="Medium" Margin="0" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                <Button Text="SAVE" Clicked="OnSaveClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+                <Button Text="BACK" Clicked="OnCancelClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+    
+</ContentPage>

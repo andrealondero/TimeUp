@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="timesheet.Views.ItemPage" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             NavigationPage.HasNavigationBar="True"
+             Title="TIMESHEET DETAIL">
+
+    <ScrollView>
+        <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
+            <Label Text="Date" TextColor="#2D8183" />
+            <DatePicker x:Name="datePicker" MaximumDate="{x:Static sys:DateTime.Now}" Format="yyyy-MM-dd" Date="{Binding Date, Mode=TwoWay}" HeightRequest="45"/>
+            <Label Text="Worked hours" TextColor="#2D8183" />
+            <Label x:Name="hoursLabel" FontSize="Medium" />
+            <Stepper x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>
+            <Label Text="Description" TextColor="#2D8183" />
+            <Editor x:Name="descriptionEditor" Text="{Binding Description, Mode=TwoWay}" Placeholder="your activities here" HeightRequest="100" MaxLength="120" />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Text="Confirmed" HorizontalOptions="Start"/>
+                <Image Grid.Column="0" Grid.Row="1" Source="checkx2.png" IsVisible="{Binding ConfirmedStatus}" HorizontalOptions="Start"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="Refused" HorizontalOptions="End"/>
+                <Image Grid.Column="1" Grid.Row="1" Source="check_redx2.png" IsVisible="{Binding RefusedStatus}" HorizontalOptions="End"/>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                <Button Text="SAVE" Clicked="OnSaveClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+                <Button Text="DELETE" Clicked="OnDeleteClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+    
+    </ScrollView>
+
+</ContentPage>

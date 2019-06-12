@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="timesheet.Views.DashBoardSuperPage"
+             NavigationPage.HasNavigationBar="False"
+             Title="DASHBOARD">
+    
+    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Margin="80,20,80,20">
+        <Button Text="TIMSHEET CONFIRMATION" x:Name="confirmationButton" Command="{Binding ConfirmationSuperuserCommand}" BackgroundColor="#2D8183" BorderColor="White" BorderWidth="0.5" BorderRadius="10" TextColor="White" />
+        <Button Text="Logout" Command="{Binding LogoutCommand}"/>
+    </StackLayout>
+    
+</ContentPage>

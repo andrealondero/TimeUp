@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="timesheet.Views.LoginPage"
+             BackgroundImage="gradient_aqua.png"
+             Title="LOGIN" >
+    
+    <ContentPage.Content>
+        
+        <ScrollView>
+            
+            <StackLayout Margin="30,20,30,10">
+                <Label Text="Welcome to" TextColor="#E5E9EA" FontSize="Large" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <Label Text="TIMESHEET" TextColor="#E5E9EA" FontSize="24" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                <Image Source="timesheet_logo.png" HeightRequest="140" WidthRequest="140" />
+                <StackLayout Margin="10,0,10,10" VerticalOptions="CenterAndExpand">
+                    <Entry x:Name="usernameEntry" Placeholder="User Name" PlaceholderColor="#FF5657" Text="{Binding Mail}" TextColor="White" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <Entry x:Name="passwordEntry" Placeholder="Password" PlaceholderColor="#FF5657" IsPassword="true" Text="{Binding Password}" TextColor="White" HorizontalOptions="FillAndExpand" HeightRequest="40" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Make password visible" TextColor="#FF5657" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Switch x:Name="isPassword" Toggled="IsPassword_Toggled" HorizontalOptions="EndAndExpand" />
+                        
+                    </StackLayout>
+                    <Button x:Name="loginButton" Text="Login" TextColor="White" BackgroundColor="#83D3D4" FontAttributes="Bold" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HorizontalOptions="FillAndExpand" Clicked="LoginButton_Clicked"/>
+                </StackLayout>
+                
+            </StackLayout>
+            
+        </ScrollView>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

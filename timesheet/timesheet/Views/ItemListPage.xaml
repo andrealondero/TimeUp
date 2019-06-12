@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="timesheet.Views.ItemListPage" 
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             NavigationPage.HasNavigationBar="True"
+             Title="VIEWER">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Clicked="OnItemAdded">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, IOS" Value="plus.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Orientation="Vertical">
+        <!--Picker Title="CHOOSE A FILTER" SelectedIndexChanged="OnPickerSelectedIndexChanged" 
+                VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Medium"
+                Margin="50,30,50,10">
+            <Picker.Items>
+                <x:String>CONFIRMED</x:String>
+                <x:String>REFUSED</x:String>
+                <x:String>SUSPENDED</x:String>
+                <x:String>ALL</x:String>
+            </Picker.Items>
+        </-->
+        <Label Text="FILTERS" FontSize="Medium" TextColor="#FF5657" HorizontalOptions="Start" Margin="20,20,0,0" />
+
+        <input:RadioButtonGroupView Orientation="Horizontal" SelectedItemChanged="Radio_SelectedItemChanged" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+            <input:RadioButton x:Name="conf" Text="CONFIRM" TextFontSize="12" />
+            <input:RadioButton x:Name="ref" Text="REFUSE" TextFontSize="12" />
+            <input:RadioButton x:Name="sus" Text="SUSPENDED" TextFontSize="12" />
+            <input:RadioButton x:Name="all" Text="ALL" TextFontSize="12" />
+        </input:RadioButtonGroupView>
+
+        <ListView x:Name="listView"
+                  Margin="20"
+                  IsPullToRefreshEnabled="true"
+                  RefreshControlColor="#FF5657"
+                  ItemSelected="OnListItemSelected"
+                  ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" MaxLines="1" VerticalTextAlignment="Center" FontSize="16" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Hours}" VerticalTextAlignment="Center" FontSize="13" WidthRequest="10"/>
+                            <Label Grid.Column="2" Grid.Row="0" Text="{Binding Description}" LineBreakMode="TailTruncation" MaxLines="1" VerticalTextAlignment="Center" FontSize="13"/>
+                            <Image Grid.Column="3" Grid.Row="0" Source="checkx2.png" IsVisible="{Binding ConfirmedStatus}" HorizontalOptions="EndAndExpand"/>
+                            <Image Grid.Column="3" Grid.Row="0" Source="check_redx2.png" IsVisible="{Binding RefusedStatus}" HorizontalOptions="EndAndExpand"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
