@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(timesheet.NullableDatePicker), typeof(NullableDatePickerRenderer))]
 namespace timesheet.Droid
 {
-    class NullableDatePickerRenderer : ViewRenderer<timesheet.NullableDatePicker, EditText>
+    public class NullableDatePickerRenderer : ViewRenderer<timesheet.NullableDatePicker, EditText>
     {
         DatePickerDialog _dialog;
 
@@ -37,6 +37,8 @@ namespace timesheet.Droid
             this.Control.FocusChange += OnPickerFocusChange;
             this.Control.Enabled = Element.IsEnabled;
 
+            UpdateMaximumDate();
+
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -50,6 +52,10 @@ namespace timesheet.Droid
                     this.Control.Text = entry.PlaceHolder;
                     return;
                 }
+            }
+            else if (e.PropertyName == Xamarin.Forms.DatePicker.MaximumDateProperty.PropertyName)
+            {
+                UpdateMaximumDate();
             }
 
             base.OnElementPropertyChanged(sender, e);
@@ -95,7 +101,18 @@ namespace timesheet.Droid
         private void ShowDatePicker()
         {
             CreateDatePickerDialog(this.Element.Date.Year, this.Element.Date.Month - 1, this.Element.Date.Day);
+
+            UpdateMaximumDate();
+
             _dialog.Show();
+        }
+
+        void UpdateMaximumDate()
+        {
+            if (_dialog != null)
+            {
+                _dialog.DatePicker.MaxDate = (long)Element.MaximumDate.ToUniversalTime().Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
+            }
         }
 
         void CreateDatePickerDialog(int year, int month, int day)

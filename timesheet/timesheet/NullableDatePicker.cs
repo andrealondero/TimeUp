@@ -8,7 +8,8 @@ namespace timesheet
     {
         public NullableDatePicker()
         {
-            Format = "yyyy-MM-dd";
+            Format = "dd  MMMM  yyyy";
+            MaximumDate = DateTime.Now;
         }
         public string _originalFormat = null;
 
@@ -61,7 +62,7 @@ namespace timesheet
         {
             base.OnPropertyChanged(propertyName);
 
-            if (propertyName == DateProperty.PropertyName || (propertyName == IsFocusedProperty.PropertyName && !IsFocused && (Date.ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd"))))
+            if (propertyName == DateProperty.PropertyName || (propertyName == IsFocusedProperty.PropertyName && !IsFocused && (Date.ToString("dd  MMMM  yyyy") == DateTime.Now.ToString("dd  MMMM  yyyy"))))
             {
                 AssignValue();
             }
@@ -74,7 +75,7 @@ namespace timesheet
                     //this code was done because when date selected is the actual date the"DateProperty" does not raise  
                     UpdateDate();
                 }
-            }
+            }            
         }
 
         public void CleanDate()

@@ -1,9 +1,7 @@
 ﻿using Plugin.InputKit.Shared.Controls;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-using timesheet.Helpers;
 using timesheet.Models;
 using timesheet.ViewModels;
 
@@ -38,32 +36,6 @@ namespace timesheet.Views
             });
             listView.ItemsSource = Items;
         }
-
-        /*async void OnPickerSelectedIndexChanged(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex == 0)
-            {
-                listView.ItemsSource = await App.Database.GetItemsConfirmedAsync();
-            }
-
-            else if (selectedIndex == 1)
-            {
-                listView.ItemsSource = await App.Database.GetItemsRefusedAsync();
-            }
-
-            else if (selectedIndex == 2)
-            {
-                listView.ItemsSource = await App.Database.GetItemsSuspendedAsync();
-            }
-
-            else if (selectedIndex == 3)
-            {
-                listView.ItemsSource = await App.Database.GetAllItemsAsync();
-            }
-        }*/
         async void OnItemAdded(object sender, EventArgs e)
         {
             Navigation.InsertPageBefore(new AddItemPage
@@ -72,10 +44,6 @@ namespace timesheet.Views
             }, 
             Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
             await Navigation.PopAsync();
-            /*await Navigation.PushAsync(new AddItemPage
-            {
-                BindingContext = new TsItems()
-            });*/
         }
 
         async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -92,8 +60,6 @@ namespace timesheet.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            // Reset the 'resume' id, since we just want to re-start here
             ((App)App.Current).ResumeAtTodoId = -1;
             listView.ItemsSource = await App.Database.GetAllItemsAsync();
         }

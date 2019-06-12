@@ -8,7 +8,7 @@
     <ScrollView>
         <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
             <Label Text="Date" TextColor="#2D8183" />
-            <DatePicker x:Name="datePicker" MaximumDate="{x:Static sys:DateTime.Now}" Format="yyyy-MM-dd" Date="{Binding Date, Mode=TwoWay}" HeightRequest="45"/>
+            <DatePicker x:Name="datePicker" MaximumDate="{x:Static sys:DateTime.Now}" Format="dd  MMMM  yyyy" Date="{Binding Date, Mode=TwoWay}" HeightRequest="45"/>
             <Label Text="Worked hours" TextColor="#2D8183" />
             <Label x:Name="hoursLabel" FontSize="Medium" />
             <Stepper x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>

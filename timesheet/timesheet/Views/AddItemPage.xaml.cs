@@ -5,10 +5,6 @@ using Xamarin.Forms.Xaml;
 using System;
 
 using timesheet.Models;
-using timesheet.Validator;
-using timesheet.ViewModels;
-using timesheet.Helpers;
-using System.IO;
 
 namespace timesheet.Views
 {
@@ -16,54 +12,16 @@ namespace timesheet.Views
     public partial class AddItemPage : ContentPage
     {
         public TsItems Item { get; set; }
-        public IValidator _itemValidator;      
-        AddItemViewModel viewModel;
-        /*public AddItemPage(ItemPageViewModel viewModel)
-        {
-            InitializeComponent();
-            _itemValidator = new ItemValidator();
-            Item = new TsItems
-            {
-                Date = DateTime.Now.AddDays(+1),
-                Hours = 0,
-                Description = "Your activities here.",
-                ConfirmedStatus = false,
-                RefusedStatus = false,
-                User_ID = 1,
-                ID = 1
-            };
-        }*/
+        public IValidator _itemValidator;
 
         public AddItemPage()
         {
             InitializeComponent();
-
-            activateDate.IsVisible = true;
-            activateDate.Focused += (sender, e) =>
-            {
-                datepicker.Focus();
-            };
-            datepicker.DateSelected += (sender, e) =>
-            {
-                dateLabel.Text = datepicker.Date.ToLongDateString();
-            };
-            /*Item = new TsItems
-            {
-                Date = DateTime.Now,
-                Hours = 0,
-                Description = "Your activities here.",
-                ConfirmedStatus = false,
-                RefusedStatus = false,
-                User_ID = 1,
-                ID = 1
-            };
-            viewModel = new AddItemViewModel(Navigation);
-            BindingContext = viewModel;*/
         }
 
         async void OnSaveClicked(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(dateLabel.Text))
+            if (String.IsNullOrEmpty(modifyDate.Text))
             {
                 await DisplayAlert("Compiling error", "Select a date", "OK");
             }
@@ -77,7 +35,7 @@ namespace timesheet.Views
             }
             else
             {
-                if (!String.IsNullOrEmpty(hoursLabel.Text) && !String.IsNullOrEmpty(descriptioneditor.Text) && !String.IsNullOrEmpty(dateLabel.Text))
+                if (!String.IsNullOrEmpty(hoursLabel.Text) && !String.IsNullOrEmpty(descriptioneditor.Text) && !String.IsNullOrEmpty(modifyDate.Text))
                 {
                     bool CreateItem = await Application.Current.MainPage.DisplayAlert("NEW ITEM", "Add a new item?", "YES", "NO");
                     if (CreateItem)
@@ -104,7 +62,27 @@ namespace timesheet.Views
         }
         private void Datepicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            dateLabel.Text = e.NewDate.ToLongDateString();
+            modifyDate.Text = e.NewDate.ToLongDateString();
+            activateDate.IsVisible = false;
+        }
+
+        private void ActivateDate_Clicked(object sender, EventArgs e)
+        {
+            datepicker.Focus();
+            datepicker.DateSelected += (s, a) =>
+            {
+                modifyDate.Text = datepicker.Date.ToString("dd  MMMM  yyyy");
+            };
+            activateDate.IsVisible = false;
+            modifyDate.IsVisible = true;
+        }
+        private void ModifyDate_Clicked(object sender, EventArgs e)
+        {
+            datepicker.Focus();
+            datepicker.DateSelected += (s, a) =>
+            {
+                modifyDate.Text = datepicker.Date.ToString("dd  MMMM  yyyy");
+            };
         }
     }
 }
