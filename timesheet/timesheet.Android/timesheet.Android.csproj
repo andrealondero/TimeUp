@@ -141,9 +141,6 @@
     <AndroidResource Include="Resources\drawable\checkx2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\compiler_button.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\gradient_aqua.png" />
   </ItemGroup>
   <ItemGroup>
@@ -162,19 +159,13 @@
     <AndroidResource Include="Resources\drawable\timesheet_logo236x236.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\viewer_button.png" />
+    <AndroidResource Include="Resources\drawable\logout.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\viewer.png" />
+    <AndroidResource Include="Resources\drawable\compiler_red.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\compiler_button68x68.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\viewer_button68x68.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\compiler_button_new.jpg" />
+    <AndroidResource Include="Resources\drawable\viewer_red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

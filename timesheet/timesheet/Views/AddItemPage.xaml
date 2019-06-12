@@ -11,15 +11,13 @@
 
         <StackLayout Spacing="20" Padding="15">
 
-            <!--Entry x:Name="activateDate" IsVisible="True" Placeholder="Select a Date" FontSize="Medium" PlaceholderColor="#910C07" /-->
-            <!--Label x:Name="dateLabel" Text="{Binding Date, Source={x:Reference datepicker}}" FontSize="Medium" /-->
-            <!--DatePicker x:Name="datepicker" IsVisible="False" IsEnabled="False" Date="{Binding Date}" DateSelected="Datepicker_DateSelected" MinimumDate="2019-01-01" MaximumDate="{x:Static system:DateTime.Now}" Format="yyyy-MM-dd" HeightRequest="45" FontSize="Small" Margin="0" /-->
-            <Label Text="Select Date:"/>
-            <local:NullableDatePicker NullableDate="{Binding Item.Date}" MinimumDate="2019-01-01" MaximumDate="{x:Static system:DateTime.Now}"/>
+            <Entry x:Name="activateDate" IsVisible="True" Placeholder="Select a Date" FontSize="Medium" PlaceholderColor="#910C07" />
+            <Label x:Name="dateLabel" Text="{Binding NullableDate, Source={x:Reference datepicker}, StringFormat='{0:yyyy-MM-dd}'}" FontSize="Medium" />
+            <!--Label Text="Select Date" TextColor="#2D8183" FontSize="Medium" /-->
+            <local:NullableDatePicker x:Name="datepicker" IsVisible="False" IsEnabled="False" NullableDate="{Binding Item.Date}" MinimumDate="2019-01-01" MaximumDate="{x:Static system:DateTime.Now}" DateSelected="Datepicker_DateSelected"/>
             <Label Text="Worked Hours" TextColor="#2D8183" FontSize="Medium" />
             <Label x:Name="hoursLabel" FontSize="Medium" />
             <Stepper x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>
-            <!--Editor x:Name="hourseditor" Text="{Binding Item.Hours, Mode=TwoWay}" Placeholder="0" PlaceholderColor="#910C07" HeightRequest="45" FontSize="Small" Margin="0" /-->
             <Label Text="Description" TextColor="#2D8183" FontSize="Medium" />
             <Editor x:Name="descriptioneditor" Text="{Binding Description, Mode=TwoWay}" Placeholder="your activities here" PlaceholderColor="#910C07" HeightRequest="100" MaxLength="120" FontSize="Medium" Margin="0" />
 
