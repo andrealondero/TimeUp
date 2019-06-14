@@ -9,11 +9,11 @@
     <ScrollView>
         <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
             <Label Text="Date" TextColor="#2D8183" />
-            <Label Text="{Binding Date, StringFormat='{0:dd  MMMM  yyyy}'}" FontSize="Large"/>
+            <Label Text="{Binding Date, StringFormat='{0:dd  MMMM  yyyy}'}" TextColor="LightGray" FontSize="Large"/>
             <Label Text="Worked hours" TextColor="#2D8183" />
-            <Label Text="{Binding Hours}" FontSize="Large" />
+            <Label Text="{Binding Hours}" TextColor="LightGray" FontSize="Large" />
             <Label Text="Description" TextColor="#2D8183" />
-            <Label x:Name="descriptionEditor" Text="{Binding Description}" FontSize="Large" />
+            <Label x:Name="descriptionEditor" Text="{Binding Description}" TextColor="LightGray" FontSize="Large" />
 
             <input:RadioButtonGroupView>
                 <input:CheckBox x:Name="radConf" Text="CONFIRM" Type="Check"  IsChecked="{Binding ConfirmedStatus}" CheckChanged="RadConf_Clicked"/>

@@ -24,9 +24,9 @@
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Text="Confirmed" HorizontalOptions="Start"/>
+                <Label Grid.Column="0" Grid.Row="0" Text="Confirmed" TextColor="LightGray" HorizontalOptions="Start"/>
                 <Image Grid.Column="0" Grid.Row="1" Source="checkx2.png" IsVisible="{Binding ConfirmedStatus}" HorizontalOptions="Start"/>
-                <Label Grid.Column="1" Grid.Row="0" Text="Refused" HorizontalOptions="End"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="Refused" TextColor="LightGray" HorizontalOptions="End"/>
                 <Image Grid.Column="1" Grid.Row="1" Source="check_redx2.png" IsVisible="{Binding RefusedStatus}" HorizontalOptions="End"/>
             </Grid>
 
