@@ -17,23 +17,14 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Orientation="Vertical">
-        <!--Picker Title="CHOOSE A FILTER" SelectedIndexChanged="OnPickerSelectedIndexChanged" 
-                VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Medium"
-                Margin="50,30,50,10">
-            <Picker.Items>
-                <x:String>CONFIRMED</x:String>
-                <x:String>REFUSED</x:String>
-                <x:String>SUSPENDED</x:String>
-                <x:String>ALL</x:String>
-            </Picker.Items>
-        </-->
+      
         <Label Text="FILTERS" FontSize="Medium" TextColor="#FF5657" HorizontalOptions="Start" Margin="20,20,0,0" />
 
         <input:RadioButtonGroupView Orientation="Horizontal" SelectedItemChanged="Radio_SelectedItemChanged" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
-            <input:RadioButton x:Name="conf" Text="CONFIRM" TextFontSize="12" />
-            <input:RadioButton x:Name="ref" Text="REFUSE" TextFontSize="12" />
+            <input:RadioButton x:Name="conf" Text="CONFIRMED" TextFontSize="12" />
+            <input:RadioButton x:Name="ref" Text="REFUSED" TextFontSize="12" />
             <input:RadioButton x:Name="sus" Text="SUSPENDED" TextFontSize="12" />
-            <input:RadioButton x:Name="all" Text="ALL" TextFontSize="12" />
+            <input:RadioButton x:Name="all" Text="ALL" TextFontSize="12" IsChecked="True" />
         </input:RadioButtonGroupView>
 
         <ListView x:Name="listView"

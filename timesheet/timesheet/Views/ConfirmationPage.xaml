@@ -6,31 +6,26 @@
              NavigationPage.HasNavigationBar="True"
              Title="CONFIRMATION">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Text="SAVE" 
-            Clicked="OnSave">
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ScrollView>
-    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
-            <Label Text="Date" FontSize="Small"/>
-            <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" MaxLines="1" VerticalOptions="Center" FontSize="Large"/>
-            <Label Text="Worked hours" FontSize="Small" />
-            <Label Text="{Binding Hours}" FontSize="Large"/>
-            <Label Text="Description" FontSize="Small" />
-            <Label Text="{Binding Description}" FontSize="Large"/>
+        <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
+            <Label Text="Date" TextColor="#2D8183" />
+            <Label Text="{Binding Date, StringFormat='{0:dd  MMMM  yyyy}'}" FontSize="Large"/>
+            <Label Text="Worked hours" TextColor="#2D8183" />
+            <Label Text="{Binding Hours}" FontSize="Large" />
+            <Label Text="Description" TextColor="#2D8183" />
+            <Label x:Name="descriptionEditor" Text="{Binding Description}" FontSize="Large" />
 
             <input:RadioButtonGroupView>
                 <input:CheckBox x:Name="radConf" Text="CONFIRM" Type="Check"  IsChecked="{Binding ConfirmedStatus}" CheckChanged="RadConf_Clicked"/>
                 <input:CheckBox x:Name="radRef" Text="REFUSE" Type="Cross" IsChecked="{Binding RefusedStatus}" CheckChanged="RadRef_Clicked"/>
             </input:RadioButtonGroupView>
 
-            <StackLayout HorizontalOptions="CenterAndExpand" Margin="10,30,10,0">
-          <Button Text="Cancel" Clicked="OnCancelClicked" HorizontalOptions="StartAndExpand" BackgroundColor="#2D8183" BorderColor="White" BorderWidth="0.5" BorderRadius="10" TextColor="White" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                <Button Text="SAVE" Clicked="OnSave" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+                <Button Text="BACK" Clicked="OnCancelClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+            </StackLayout>
         </StackLayout>
-      </StackLayout>
+
     </ScrollView>
 
 </ContentPage>

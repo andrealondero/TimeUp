@@ -3,11 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="timesheet.Views.DashBoardSuperPage"
              NavigationPage.HasNavigationBar="False"
+             BackgroundImage="gradient_aqua.png"
              Title="DASHBOARD">
     
-    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Margin="80,20,80,20">
-        <Button Text="TIMSHEET CONFIRMATION" x:Name="confirmationButton" Command="{Binding ConfirmationSuperuserCommand}" BackgroundColor="#2D8183" BorderColor="White" BorderWidth="0.5" BorderRadius="10" TextColor="White" />
-        <Button Text="Logout" Command="{Binding LogoutCommand}"/>
-    </StackLayout>
+    <Grid Margin="10,20,10,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1,5*"/>
+            <RowDefinition Height="0,5*"/>
+            <RowDefinition Height="1,5*"/>
+            <RowDefinition Height="0,5*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ImageButton x:Name="confirmationButton" Source="viewer_red" Grid.Column="1" Grid.Row="1" Command="{Binding ConfirmationSuperuserCommand}" BackgroundColor="Transparent" />
+        <Label Grid.Column="1" Grid.Row="2" Text="viewer" TextColor="White" FontSize="Small" HorizontalOptions="Center"/>
+        <ImageButton Source="logout" Grid.Column="1" Grid.Row="3" Command="{Binding LogoutCommand}" BackgroundColor="Transparent" />
+        <Label Grid.Column="1" Grid.Row="4" Text="logout" TextColor="White" FontSize="Small" HorizontalOptions="Center"/>
+    </Grid>
     
 </ContentPage>

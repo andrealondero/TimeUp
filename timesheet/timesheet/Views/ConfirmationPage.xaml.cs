@@ -1,6 +1,7 @@
 ﻿using System;
 using timesheet.Helpers;
 using timesheet.Models;
+using timesheet.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,10 +10,34 @@ namespace timesheet.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ConfirmationPage : ContentPage
     {
+        public TsItems Item { get; set; }
+        ItemPageViewModel viewModel;
+
+        public ConfirmationPage(ItemPageViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = this.viewModel = viewModel;
+        }
+
         public ConfirmationPage()
         {
             InitializeComponent();
-        }       
+        }
+
+        protected override void OnAppearing()
+        {
+            if (radConf.IsChecked && !radRef.IsChecked)
+            {
+                radRef.IsDisabled = true;
+            }
+            if (!radConf.IsChecked && radRef.IsChecked)
+            {
+                radConf.IsDisabled = true;
+            }
+
+            base.OnAppearing();
+        }
+
         async void OnSave(object sender, EventArgs e)
         {
             if (!radConf.IsDisabled && !radRef.IsDisabled)
@@ -26,8 +51,10 @@ namespace timesheet.Views
                     bool CreateItem = await Application.Current.MainPage.DisplayAlert("CONFIRM", "Save the timesheet?", "YES", "NO");
                     if (CreateItem)
                     {
-                        var todoItem = (TsItems)BindingContext;
-                        await App.Database.SaveItemAsync(todoItem);
+                        var item = (TsItems)BindingContext;
+                        await App.Database.SaveItemAsync(item);
+                        Navigation.InsertPageBefore(new ConfirmationListPage(),
+                            Navigation.NavigationStack[Navigation.NavigationStack.Count - 3]);
                         await Navigation.PopAsync();
                     }
                 }

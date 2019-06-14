@@ -115,9 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\timesheet\timesheet.csproj">
@@ -141,22 +138,22 @@
     <AndroidResource Include="Resources\drawable\checkx2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradient_aqua.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\gradient_aqua.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradient_red.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\gradient_red.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradient_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\gradient_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\timesheet_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\timesheet_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\timesheet_logo110x110.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\timesheet_logo110x110.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\timesheet_logo236x236.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\timesheet_logo236x236.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logout.png" />

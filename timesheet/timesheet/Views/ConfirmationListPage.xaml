@@ -8,17 +8,19 @@
     
     <StackLayout Orientation="Vertical">
 
-        <Label Text="FILTERS" FontSize="Medium" HorizontalOptions="Start" Margin="20,20,0,0" />
+        <Label Text="FILTERS" FontSize="Medium" TextColor="#FF5657" HorizontalOptions="Start" Margin="20,20,0,0" />
 
         <input:RadioButtonGroupView Orientation="Horizontal" SelectedItemChanged="Radio_SelectedItemChanged" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0">
-            <input:RadioButton x:Name="conf" Text="CONFIRM" TextFontSize="12" />
-            <input:RadioButton x:Name="ref" Text="REFUSE" TextFontSize="12" />
+            <input:RadioButton x:Name="conf" Text="CONFIRMED" TextFontSize="12" />
+            <input:RadioButton x:Name="ref" Text="REFUSED" TextFontSize="12" />
             <input:RadioButton x:Name="sus" Text="SUSPENDED" TextFontSize="12" />
-            <input:RadioButton x:Name="all" Text="ALL" TextFontSize="12" />
+            <input:RadioButton x:Name="all" Text="ALL" TextFontSize="12" IsChecked="True" />
         </input:RadioButtonGroupView>
 
     <ListView x:Name="listView" 
               Margin="20" 
+              IsPullToRefreshEnabled="true"
+              RefreshControlColor="#FF5657"
               ItemSelected="OnListItemSelected"
               ItemsSource="{Binding Items}">
         <ListView.ItemTemplate>
@@ -34,11 +36,11 @@
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" MaxLines="1" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Date, StringFormat='{0:dd-MMM-yy}'}" MaxLines="1" VerticalTextAlignment="Center" HorizontalOptions="Start" />
                         <Label Grid.Column="1" Grid.Row="0" Text="{Binding Hours}" VerticalTextAlignment="Center" HorizontalOptions="Start" />
                         <Label Grid.Column="2" Grid.Row="0" Text="{Binding Description}" LineBreakMode="TailTruncation" MaxLines="1" VerticalTextAlignment="Center" HorizontalOptions="Center" />
-                        <Image Grid.Column="3" Grid.Row="0" Source="check.png" HorizontalOptions="End" IsVisible="{Binding ConfirmedStatus}" />
-                        <Image Grid.Column="3" Grid.Row="0" Source="check_red.png" HorizontalOptions="End" IsVisible="{Binding RefusedStatus}" />
+                            <Image Grid.Column="3" Grid.Row="0" Source="check.png" IsVisible="{Binding ConfirmedStatus}" HorizontalOptions="EndAndExpand" />
+                            <Image Grid.Column="3" Grid.Row="0" Source="check_red.png" IsVisible="{Binding RefusedStatus}" HorizontalOptions="EndAndExpand" />
                     </Grid>
                 </ViewCell>
             </DataTemplate>
