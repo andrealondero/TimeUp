@@ -8,6 +8,7 @@ namespace timesheet.Views
 {
     public partial class ItemPage : ContentPage
     {
+        public static Action EmulateBackPressed;
         public TsItems Item { get; set; }
         ItemPageViewModel viewModel;
         public ItemPage(ItemPageViewModel viewModel)
@@ -48,8 +49,6 @@ namespace timesheet.Views
                     {
                         var item = (TsItems)BindingContext;
                         await App.Database.SaveItemAsync(item);
-                        Navigation.InsertPageBefore(new ItemListPage(),
-                            Navigation.NavigationStack[Navigation.NavigationStack.Count - 3]);
                         await Navigation.PopAsync();
                     }
                 }
@@ -67,10 +66,6 @@ namespace timesheet.Views
             }
         }
 
-        async void OnCancelClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
         private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             double value = e.NewValue;

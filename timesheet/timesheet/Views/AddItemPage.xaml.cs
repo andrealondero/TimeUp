@@ -42,9 +42,6 @@ namespace timesheet.Views
                     {
                         var item = (TsItems)BindingContext;
                         await App.Database.SaveItemAsync(item);
-                        //await Navigation.PushAsync(new ItemListPage());
-                        Navigation.InsertPageBefore(new ItemListPage(),
-                            Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
                         await Navigation.PopAsync();
                     }
                 }
@@ -68,6 +65,7 @@ namespace timesheet.Views
 
         private void ActivateDate_Clicked(object sender, EventArgs e)
         {
+            //datepicker.IsVisible = true;
             datepicker.Focus();
             datepicker.DateSelected += (s, a) =>
             {
@@ -78,6 +76,7 @@ namespace timesheet.Views
         }
         private void ModifyDate_Clicked(object sender, EventArgs e)
         {
+            //datepicker.IsVisible = true;
             datepicker.Focus();
             datepicker.DateSelected += (s, a) =>
             {

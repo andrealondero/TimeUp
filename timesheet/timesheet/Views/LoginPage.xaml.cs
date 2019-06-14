@@ -91,6 +91,14 @@ namespace timesheet.Views
             {
                 DisplayAlert("LOGIN ERROR", "incorrect password", "OK");
             }
+            if (userMail && superPass)
+            {
+                DisplayAlert("LOGIN ERROR", "verify credentials", "OK");
+            }
+            if (superMail && userPass)
+            {
+                DisplayAlert("LOGIN ERROR", "verify credentials", "OK");
+            }
             else
             {
                 if (IsUser && !IsSuperUser)
@@ -99,7 +107,7 @@ namespace timesheet.Views
                     Application.Current.MainPage.DisplayAlert("WELCOME", "andrea.londero", "OK");
                     //Navigation.PushAsync(new DashBoardPage());
                     Navigation.InsertPageBefore(new DashBoardPage(),
-                            Navigation.NavigationStack[Navigation.NavigationStack.Count -1]);
+                            Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
                     Navigation.PopAsync();
                 }
                 if (!IsUser && IsSuperUser)

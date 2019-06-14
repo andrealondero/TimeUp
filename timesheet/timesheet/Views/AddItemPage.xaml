@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:timesheet"
              x:Class="timesheet.Views.AddItemPage"
              NavigationPage.HasNavigationBar="True"
@@ -24,7 +23,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Row="0" x:Name="activateDate" Text="Select a date" TextColor="#910C07" Clicked="ActivateDate_Clicked" FontSize="Medium" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" BorderRadius="10" />
                 <Button Grid.Row="0" x:Name="modifyDate" Text="{Binding NullableDate, Source={x:Reference datepicker}, StringFormat='{0:dd  MMMM  yyyy}'}" Clicked="ModifyDate_Clicked" TextColor="Black" FontSize="Medium" IsVisible="False" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" BorderRadius="10" />
-                <local:NullableDatePicker x:Name="datepicker" IsVisible="False" IsEnabled="False" NullableDate="{Binding Item.Date}" DateSelected="Datepicker_DateSelected"/>
+                <local:NullableDatePicker x:Name="datepicker" IsVisible="False" IsEnabled="True" NullableDate="{Binding Item.Date}" DateSelected="Datepicker_DateSelected"/>
                 <Label Grid.Row="1" Text="Worked Hours" TextColor="#2D8183" FontSize="Medium" />
                 <Label Grid.Row="2" x:Name="hoursLabel" FontSize="Medium" />
                 <Stepper Grid.Row="3" x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>

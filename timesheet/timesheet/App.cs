@@ -28,18 +28,7 @@ namespace timesheet
 
             SetMainPage();
         }
-        /*private void SetMainPage()
-        {
-            if (!string.IsNullOrEmpty(UserSettings.Mail)
-                  && !string.IsNullOrEmpty(UserSettings.Password))
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new DashBoardPage());
-            }
-        }*/
+
         private void SetMainPage()
         {
             if (!string.IsNullOrEmpty(UserSettings.Mail)

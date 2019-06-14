@@ -53,8 +53,6 @@ namespace timesheet.Views
                     {
                         var item = (TsItems)BindingContext;
                         await App.Database.SaveItemAsync(item);
-                        Navigation.InsertPageBefore(new ConfirmationListPage(),
-                            Navigation.NavigationStack[Navigation.NavigationStack.Count - 3]);
                         await Navigation.PopAsync();
                     }
                 }

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:timesheet"
+             x:Class="timesheet.Views.CompilerPage"
+             NavigationPage.HasNavigationBar="True"
+             Title="NEW TIMESHEET">
+
+    <ScrollView>
+
+        <StackLayout>
+            <Grid Margin="10,20,10,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" x:Name="activateDate" Text="Select a date" TextColor="#910C07" Clicked="ActivateDate_Clicked" FontSize="Medium" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" BorderRadius="10" />
+                <Button Grid.Row="0" x:Name="modifyDate" Text="{Binding NullableDate, Source={x:Reference datepicker}, StringFormat='{0:dd  MMMM  yyyy}'}" Clicked="ModifyDate_Clicked" TextColor="Black" FontSize="Medium" IsVisible="False" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" BorderRadius="10" />
+                <local:NullableDatePicker x:Name="datepicker" IsVisible="False" IsEnabled="True" NullableDate="{Binding Item.Date}" DateSelected="Datepicker_DateSelected"/>
+                <Label Grid.Row="1" Text="Worked Hours" TextColor="#2D8183" FontSize="Medium" />
+                <Label Grid.Row="2" x:Name="hoursLabel" FontSize="Medium" />
+                <Stepper Grid.Row="3" x:Name="stephours" Minimum="0" Maximum="12" Increment="1" Value="{Binding Hours}" ValueChanged="Stepper_ValueChanged"/>
+                <Label Grid.Row="4" Text="Description" TextColor="#2D8183" FontSize="Medium" />
+                <Editor Grid.Row="5" x:Name="descriptioneditor" Text="{Binding Description, Mode=TwoWay}" Placeholder="your activities here" PlaceholderColor="#910C07" HeightRequest="100" MaxLength="120" FontSize="Medium" Margin="0" />
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10,0,10,0">
+                <Button Text="SAVE" Clicked="OnSaveClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+                <Button Text="BACK" Clicked="OnCancelClicked" BackgroundColor="#83D3D4" TextColor="White" BorderColor="White" BorderWidth="0.5" BorderRadius="10" HeightRequest="80" WidthRequest="80" Margin="0,0,0,20" HorizontalOptions="Center" />
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

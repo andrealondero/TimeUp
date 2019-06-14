@@ -18,7 +18,6 @@ namespace timesheet.Droid
 
         public NullableDatePickerRenderer(Context context) : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<timesheet.NullableDatePicker> e)

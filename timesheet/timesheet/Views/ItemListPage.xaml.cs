@@ -38,12 +38,10 @@ namespace timesheet.Views
         }
         async void OnItemAdded(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new AddItemPage
+            await Navigation.PushAsync(new AddItemPage
             {
                 BindingContext = new TsItems()
-            }, 
-            Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-            await Navigation.PopAsync();
+            });
         }
 
         async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
